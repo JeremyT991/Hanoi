@@ -56,18 +56,28 @@ public class Hanoi {
   }
 
   public void move1(Stack a, Stack b) {
+    int A = 0;
+    int B = 0;
 
     try {
-      if ((int) a.peek() > (int) b.peek())
-        throw new Monk("Can't put a bigger value on a smaller one!");
+      A = (int) a.peek();
     } catch (EmptyStackException e) {
+      A = size + 1;
+    }
 
+    try {
+      B = (int) b.peek();
+    } catch (EmptyStackException e) {
+      B = size + 1;
+    }
+
+    try {
+      if (A > B)
+        throw new Monk("Can't put a bigger value on a smaller one!");
+      b.push(a.pop());
     } catch (Monk e) {
 
     } 
-
-    b.push(a.pop());
-   
   }
 
   public void build() {
